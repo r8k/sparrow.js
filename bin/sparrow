@@ -1,0 +1,128 @@
+#!/usr/bin/env node
+
+/**
+ * `Module` Dependencies
+ */
+var fs = require('fs')
+  , path = require('path');
+
+
+var
+    DEBG = '\033[45m\x1B[1m DEBG \x1B[22m\033[49m '
+  , INFO = '\033[42m\x1B[1m INFO \x1B[22m\033[49m '
+  , WARN = '\033[43m\x1B[1m WARN \x1B[22m\033[49m '
+  , ERRR = '\033[41m\x1B[1m ERRR \x1B[22m\033[49m '
+  , ARRW = '\x1B[31m\x1B[1m ==> \x1B[22m\x1B[39m';
+
+/**
+ * Our `Logger`
+ */
+var Logger = function (level) {
+    this._level = level ? level : 2
+};
+
+Logger.prototype = {
+    debug: function (msg) {
+        if (this._level < 3) {
+            return;
+        }
+        console.info(DEBG + msg);
+    },
+
+    info: function (msg) {
+        if (this._level < 2) {
+            return;
+        }
+        console.info(INFO + msg);
+    },
+
+    warn: function (msg) {
+        if (this._level < 1) {
+            return;
+        }
+        console.warn(WARN + msg);
+    },
+
+    error: function (msg) {
+        if (this._level < 0) {
+            return;
+        }
+        console.error(ERRR + msg);
+    }
+};
+
+
+var vobj = {}
+  , log = new Logger();
+
+
+/**
+ * get `unique` items from an array
+ * 
+ * @return {Array}
+ */
+Array.prototype.__defineGetter__('unique', function() {
+    var init = this
+      , uniq = []
+      , seen = [];
+    
+    this.forEach(function (v, i) {
+        if (seen.indexOf(v) === -1) {
+            seen.push(v);
+            uniq.push(init[i]);
+        }
+    });
+    return uniq;
+});
+
+
+/**
+ * `variables` reads file synchronously
+ * for usage of variables into array
+ * (g|s) - get, set regex
+ * 
+ * @return {Object} [variables usage]
+ */
+var get_vars = function(fp) {
+    var regxs = '(.*)context.getVariable(.*)'
+      , gregx = new RegExp(regxs, 'g')
+      , iregx = new RegExp(regxs)
+      , orgex = new RegExp(/[^(')]+/)
+      , varay = new Array();
+    
+    try {
+      fs.readFileSync(fp).toString()
+        .match(gregx).forEach(function(key) {
+          varay.push(key.match(iregx).pop()
+            .match(orgex).shift());
+        });
+    } catch (e) {
+        vobj['dummy_variable'] = new String();
+        return vobj;
+    }
+
+    varay.unique.forEach(function(key) {
+        vobj[key] = new String();
+    })
+
+    return vobj;
+};
+
+
+/**
+ * `dumpvariables` writes variables usage to file
+ */
+var dump_vars = function(fp, obj) {
+    var data = 'exports.flow_vars = ';
+    var fp = fp.split(path.extname(fp)).shift() + '-fixture.js';
+    fs.writeFile(fp, data + JSON.stringify(obj, null, 4));
+    log.info('Dumped variables' + ARRW + fp);
+};
+
+// cleanse args first, before utilizing them
+process.argv.shift(); process.argv.shift();
+
+process.argv.forEach(function (fp) {
+    var fp = path.resolve(process.cwd(), fp);
+    dump_vars(fp, get_vars(fp));
+});

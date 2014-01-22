@@ -1,0 +1,31 @@
+{
+    "name": "sparrow.js",
+    "version": "0.0.1",
+    "description": "light & simple, apigee-javascript adapter, for using with test frameworks",
+    "keywords": [
+        "apigee",
+        "javascript",
+        "test",
+        "mocha"
+    ],
+    "author": "Rajiv Kilaparti <rkilaparti@apigee.com>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/r8k/sparrow.js.git"
+    },
+    "main": "./index",
+    "bin": {
+        "sparrow": "./bin/sparrow"
+    },
+    "engines": {
+        "node": ">= 0.8.x"
+    },
+    "scripts": {
+        "test": "make test"
+    },
+    "dependencies": {
+        "httpsync": ">= 0.0.8",
+        "should": ">= 3.0.x"
+    },
+    "license": "MIT"
+}
