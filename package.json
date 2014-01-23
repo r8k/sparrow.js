@@ -1,6 +1,6 @@
 {
     "name": "sparrow.js",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "light & simple, apigee-javascript adapter, for using with test frameworks",
     "keywords": [
         "apigee",
