@@ -27,5 +27,8 @@
         "httpsync": ">= 0.0.8",
         "should": ">= 3.0.x"
     },
+    "devDependencies": {
+        "mocha": "~1.17.1"
+    },
     "license": "MIT"
 }
