@@ -3,7 +3,7 @@ MODS = should
 UI = bdd
 
 test:
-	mocha --reporter $(REPORTER) \
+	./node_modules/.bin/mocha --reporter $(REPORTER) \
 		--require $(MODS) \
 		--ui $(UI)
 
