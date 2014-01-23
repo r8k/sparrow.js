@@ -1,6 +1,6 @@
 # Sparrow.js  _ _ _ _ _ _ _ [![sparrow logo](http://f.cl.ly/items/2U1E2g0v1p272R312H3b/sparrow-logo.jpg)](http://apigee.com/)
   
-  Light & Simple, Apigee JavaScript adapter, for using with test frameworks, on your local machine !!
+  [![Build Status](https://travis-ci.org/r8k/sparrow.js.png?branch=master)](https://travis-ci.org/r8k/sparrow.js)  Light & Simple, Apigee JavaScript adapter, for using with test frameworks, on your local machine !!
 
 ## Installation
     $ npm install -g sparrow.js
