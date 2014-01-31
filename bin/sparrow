@@ -114,7 +114,7 @@ var get_vars = function(fp) {
  */
 var dump_vars = function(fp, obj) {
     var data = 'exports.flow_vars = ';
-    var fp = fp.split(path.extname(fp)).shift() + '-fixture.js';
+    var fp = String(fp).replace(new RegExp(path.extname(fp) + '$'), '') + '-fixture.js';
     fs.writeFile(fp, data + JSON.stringify(obj, null, 4));
     log.info('Dumped variables' + ARRW + fp);
 };
