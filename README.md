@@ -78,6 +78,10 @@ try {
 ##
     $ mocha
 
+## Contributing
+
+  * Please read Contributing Guidelines [here](https://github.com/r8k/sparrow.js/wiki/Contributing)
+
 
 ## License
 
