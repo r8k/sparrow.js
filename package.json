@@ -24,8 +24,11 @@
         "test": "make test"
     },
     "dependencies": {
-        "httpsync": ">= 0.0.8",
         "should": ">= 3.0.x"
+    },
+    "optionalDependencies": {
+        "http-sync": ">= 0.0.8",
+        "http-sync-win": ">=0.0.7"
     },
     "devDependencies": {
         "mocha": "~1.17.1"
