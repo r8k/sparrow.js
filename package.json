@@ -1,37 +1,36 @@
 {
-    "name": "sparrow.js",
-    "version": "0.0.6",
-    "description": "light & simple, apigee-javascript adapter, for using with test frameworks",
-    "keywords": [
-        "apigee",
-        "javascript",
-        "test",
-        "mocha"
-    ],
-    "author": "Rajiv Kilaparti <rkilaparti@apigee.com>",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/r8k/sparrow.js.git"
-    },
-    "main": "./index",
-    "bin": {
-        "sparrow": "./bin/sparrow"
-    },
-    "engines": {
-        "node": ">= 0.8.x"
-    },
-    "scripts": {
-        "test": "make test"
-    },
-    "dependencies": {
-        "should": ">= 3.0.x"
-    },
-    "optionalDependencies": {
-        "httpsync": ">= 0.0.8",
-        "http-sync-win": ">=0.0.7"
-    },
-    "devDependencies": {
-        "mocha": "~1.17.1"
-    },
-    "license": "MIT"
+  "name": "sparrow.js",
+  "version": "0.0.6",
+  "description": "light & simple, apigee-javascript adapter, for using with test frameworks",
+  "keywords": [
+    "apigee",
+    "javascript",
+    "test",
+    "mocha"
+  ],
+  "author": "Rajiv Kilaparti <rkilaparti@apigee.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/r8k/sparrow.js.git"
+  },
+  "main": "./index",
+  "bin": {
+    "sparrow": "./bin/sparrow"
+  },
+  "engines": {
+    "node": ">= 0.8.x"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "dependencies": {
+    "should": ">= 3.0.x"
+  },
+  "optionalDependencies": {},
+  "devDependencies": {
+    "deasync": "0.0.7",
+    "mocha": "~1.17.1",
+    "request": "^2.51.0"
+  },
+  "license": "MIT"
 }
