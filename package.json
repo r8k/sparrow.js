@@ -27,7 +27,7 @@
         "should": ">= 3.0.x"
     },
     "optionalDependencies": {
-        "httpsync": ">= 0.0.8",
+        "http-sync": "0.1.2",
         "http-sync-win": ">=0.0.7"
     },
     "devDependencies": {
